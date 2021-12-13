@@ -26,8 +26,7 @@ hamButton2.onclick = reveal2;
 // 
 // 
 // 
-// BACKGROUND CHANGE ON CLICK, First is already dark, than if you click
-// one gets dark, the other light. 
+// BACKGROUND CHANGE ON CLICK
 var boxes = document.querySelectorAll(".the-numbers__box");
 
 
@@ -36,21 +35,14 @@ boxes.forEach((box)=>{
     box.addEventListener("click", () => {
 
         if(!box.classList.contains("the-numbers__box--dark")){
-        // If the list doesnt contain box dark make a for loop
-
             for(index = 0; index < boxes.length /* 6 */; index ++){
                 boxes[index].classList.remove("the-numbers__box--dark");
-                // Go through all and remove dark
                 boxes[index].classList.add("the-numbers__box--light");
-                // Go through all and add light
             }
             box.classList.add("the-numbers__box--dark");
-            // Add dark to the one you clicked
-
-        }else{
-            // box.classList.remove("the-numbers__box--dark");
-            // We dont even need this part.
         }
+           
+        
     });
 });
 // 
@@ -65,7 +57,6 @@ boxes.forEach((box)=>{
 // CAROUSEL FOR REVIEW CARDS
 const track = document.querySelector(".carousel__track");
 
-// Slides in an array
 const slides = Array.from(track.children);
 
 // Next button
@@ -77,23 +68,11 @@ const prevButton = document.querySelector(".testimonials__button--up");
 const slideHeight = slides[0].getBoundingClientRect().height;
 
 
-// LOOPING THROUGH IT TO ASSIGN THE STYLE TOP VALUE
-// for (var i=0; i < slides.length; i++){
-//     let height = slides[i].getBoundingClientRect().height;
-    
-//     // slides[i].style.top = 80 + (height * i + (i * 40)) + "px";
-
-//      slides[i].style.top = 80 + (height * i + (i * 40)) + "px";
-// }
-
-
 // // Loop for setting the position of the review boxes
 const setSlidePosition = function (slide, index){
     slide.style.top = 80 + (slideHeight * index + (index * 40)) + "px";
 };
 
-
-// // Actually setting the style top for each box
 slides.forEach(setSlidePosition);
 
 
@@ -196,8 +175,6 @@ window.addEventListener("scroll", function(){
 // 
 // 
 // HERO SECTION ANIMATION
-// HEADING FROM BEHIND
-// Creating the timeline
 let tl = gsap.timeline({
     defaults:{
         ease:"power1.inOut",
@@ -206,15 +183,14 @@ let tl = gsap.timeline({
 });
 
 // SETTING THE STARTING PROPERTIES
-// Headline moves behind white span
 tl.set(".text", {
     y:"100%"
 })
-// We dont see it because it is small
+
 tl.set(".fade-in-scale", {
     scale:0,
 })
-// We move them left 
+
 tl.set(".anim-move-in", {
     x: "-250",
     opacity:0
@@ -227,7 +203,6 @@ tl.set(".navbar-animation", {
 // 
 // 
 // ANIMATING IN ORDER
-// Text moves up so from behind the white rectangles
 tl.to(".text", {
     y: "0%",
     duration:1,
@@ -259,19 +234,15 @@ tl.to(".navbar-animation", {
 })
 
 // TRIGGERING THE ANIMATION ON SCROLL WITHOUT THE PLUGIN
-
-// Put the triggering element inside a variable
 const secondFadeIn = document.querySelector(".second-fade-in");
 
 const options = {
-    root:null, //This is the viewport
-    threshold: 1, //Firing immediately when reaching section, 0.25, will fire 25% in section
-    rootMargin: "100px" //You can set a -100px or +50px, so your viewport starts from that. 
+    root:null,
+    threshold: 1,
+    rootMargin: "100px"
 };
 
 // SECOND TIMELINE WITH HAPPY MAN FADING ING
-
-// Putting the trigger in a variable
 const section1title = document.querySelector(".section__benefits__title");
 
 // Creating the timeline
@@ -282,7 +253,6 @@ let happyManAnimation = gsap.timeline({
     }
 });
 
-// Setting what should happen in the timeline and to which element
 // Happy person picture fade in
 happyManAnimation.to(".fade-in-happy-man", {
     opacity:1,
@@ -311,19 +281,16 @@ happyManAnimation.to(".tag-anim", {
 // Creating the observer which will play the animation
 const imageFadein = new IntersectionObserver(function(entries, appearOnScroll) {
     entries.forEach(entry => {
-        // It fires ONLY when it is encountered
         if(!entry.isIntersecting){
             return;
         } else {
             // Starting the GSAP animation or timeline
             happyManAnimation.play();
-            // Unobserve is so it fires once, not everytime you scroll to it
             appearOnScroll.unobserve(entry.target);
         }
     });
 }, options);
 
-// Which element will trigger the function which eventually will play the gsap animation
 imageFadein.observe(section1title);
 // 
 // 
@@ -347,17 +314,14 @@ emailinputfield.addEventListener("click", function(){
     emailsubmitbtn.style.transform = "translateX(5px)";
 })
 
-// On mouse down we need the active state from css, so to scale it down
 emailsubmitbtn.addEventListener("mousedown", function(){
     emailsubmitbtn.style.transform = "translateX(5px) scale(0.93)";
 })
 
-// To make it look natural on mouse up it has to be scale 1, so it goes small and big
 emailsubmitbtn.addEventListener("mouseup", function(){
     emailsubmitbtn.style.transform = "translateX(5px) scale(1)";
 })
 
-// We create an if else, if the user clicks anywhere and the input field is not the current active element and the input field has a value of nothing so nothing is written inside, it moves the button back
 document.addEventListener("click", function(){
     if (emailinputfield !== document.activeElement && emailinputfield.value == ""){
         emailsubmitbtn.style.transform = "translateX(-60px)";
@@ -368,7 +332,6 @@ document.addEventListener("click", function(){
 // 
 // 
 // INPUT FIELD CHECK
-// Checking the input field and removing the input field when subscribed plus adding text
 const form = document.querySelector(".newsletter__form")
 
 function logSubmit(event) {
@@ -382,6 +345,7 @@ function logSubmit(event) {
 
     // Creating an h5 element
     var heading = document.createElement("h5");
+
     // Assigning its inner html
     heading.innerHTML = "You have successfully subscribed";
 
@@ -401,7 +365,6 @@ form.addEventListener('submit', logSubmit);
 // 
 // 
 // 3D TILT EFFECT ON THE IMAGE
-// Choosing the image or the element
 let el = document.querySelector(".cost-center__img");
 
 // Getting the height and the width of the element
@@ -410,20 +373,14 @@ const width = el.clientWidth;
 
 // Creating the function with an event
 function handleMove(e){
-    // We will get the horizontal and vertical value of the event happening
-    // So a number, it will be relative to the top left of the positioned element
     const xVal = e.layerX;
     const yVal = e.layerY;
 
-    // We count a y rotation, by subtracting vertical value - width of the current element
-    // 20 is just a random number, it can be any number, but the effect will be different
     const yRotation = 20 * ((xVal - width / 2) / width);
     const xRotation = -20 * ((yVal - height / 2) / height);
   
     /* Generate string for CSS transform property */
     const string = 'perspective(500px) rotateX(' + xRotation + 'deg) rotateY(' + yRotation + 'deg)';
-
-    // Setting the transform style for the element
     el.style.transform = string;
 }
 
