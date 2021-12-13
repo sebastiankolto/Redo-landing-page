@@ -1,0 +1,176 @@
+/* NAVBAR ITSELF */
+.main-header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 150px;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__brand {
+    display: flex;
+    width: 90px;
+    min-width: 90px;
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    margin-left: 5px;
+    padding: 36px 26px;
+    color: $navLinkColor;
+    font-weight: 600;
+    transition: all 0.15s linear;
+
+    &:hover {
+      color: $navLinkColorHover;
+    }
+  }
+
+  &__ham {
+    display: none;
+  }
+}
+
+.scroll-active {
+  background-color: rgba(160, 160, 160, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+//
+//
+//
+//
+//
+/* HIDDEN NAVIGATION BAR */
+.navbar__hidden {
+  @include flexCenter();
+  flex-direction: column;
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px;
+  background: $primaryColor;
+  z-index: 15;
+  overflow: auto;
+  transition: transform 0.5s ease-in-out;
+
+  &__exit {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    cursor: pointer;
+    transition: 0.3s transform ease-in-out;
+
+    &:hover {
+      transform: scale(0.8);
+    }
+  }
+
+  /* EXIT BUTTON 1 IN THE HIDDEN MENU */
+  &__exit__1 {
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: relative;
+    top: 13px;
+    background: white;
+    transform: rotate(45deg);
+  }
+
+  /* EXIT BUTTON 2 IN THE HIDDEN MENU */
+  &__exit__2 {
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: relative;
+    top: 11px;
+    background: white;
+    transform: rotate(135deg);
+  }
+
+  &__link {
+    margin: 20px 0px;
+    color: white;
+    font-size: 24px;
+
+    &::after {
+      content: "";
+      display: flex;
+      height: 2px;
+      margin-top: 5px;
+      background: white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    &:hover:after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}
+//
+//
+//
+//
+//
+/* THE SEARCH BAR */
+.navbar__search {
+  display: flex;
+  border-radius: 25px;
+  background-color: white;
+  box-shadow: 0px 0px 8px 3px rgb(235, 235, 235);
+
+  &__input {
+    width: 140px;
+    border-radius: 25px;
+    padding: 15px 20px;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      position: relative;
+      top: 2px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5;
+    }
+  }
+
+  &__button {
+    width: 50px;
+    border-radius: 25px;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    & img {
+      width: 20px;
+    }
+  }
+}

@@ -1,0 +1,589 @@
+@import "variables";
+@import "mixins";
+@import "navigation";
+@import "hero";
+@import "sections";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/*CSS RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: $primaryColor;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+a {
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 4.2rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.9;
+  text-align: justify;
+}
+//
+//
+//
+/* FOR ANIMATIONS */
+.fade-in,
+.fade-in-scale,
+.anim-move-in,
+.fade-in-happy-man,
+.fade-in-right,
+.second-fade-in,
+.tag-anim {
+  opacity: 0;
+}
+
+//
+//
+//
+/*------------------------------------*\
+  JAVASCRIPT CLASSES
+\*------------------------------------*/
+.hide2 {
+  transform: translateX(100%);
+}
+
+.show2 {
+  transform: translateX(0%);
+}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/*------------------------------------*\
+  RESPONSIVE CODE 1240 
+\*------------------------------------*/
+@media screen and (max-width: 1240px) {
+  // On smaller screen we add space between so it moves the two containers to the two sides and remove the margin 0 auto and left so it is aligned to the right side completely.
+  .navbar1 {
+    justify-content: space-between;
+
+    &__navigation {
+      margin: 0;
+      left: 0;
+    }
+  }
+
+  .navbar,
+  .navbar,
+  .navbar3 {
+    justify-content: space-between;
+
+    &__links {
+      margin: 0;
+      left: 0;
+    }
+  }
+}
+/*------------------------------------*\
+  RESPONSIVE CODE 1240 
+\*------------------------------------*/
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/*------------------------------------*\
+  RESPONSIVE CODE 1024 
+\*------------------------------------*/
+@media screen and (max-width: 1024px) {
+  // MAIN STYLES
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+  }
+
+  .container-width {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .navbar,
+  .navbar,
+  .navbar3 {
+    height: 56px;
+  }
+
+  .navbar__link,
+  .navbar__search {
+    display: none;
+  }
+
+  //
+  //
+  //
+  //
+  //
+  /* NAVIGATION BAR HAMBURGER MENU*/
+  .navbar__ham {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    padding: 10px 0px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    row-gap: 6px;
+
+    &:hover {
+      transition: padding 0.3s ease-in-out;
+      padding: 15px 0px;
+    }
+
+    &:active {
+      transition: padding 0.1s linear;
+      padding: 18px 0px;
+    }
+    &:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &::before {
+      content: "";
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      position: absolute;
+      right: 7px;
+      background: $primaryColorHover;
+      opacity: 0;
+      z-index: 1;
+      transform: scale(0.5);
+      transition: 0.3s all ease-in-out;
+    }
+
+    & span {
+      width: 25px;
+      height: 2px;
+      background: $primaryColor;
+      z-index: 2;
+    }
+  }
+  //
+  //
+  //
+  //
+  //
+  .hero {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    margin-top: 100px;
+
+    &__text {
+      align-items: center;
+      margin-bottom: 100px;
+
+      &__header {
+        text-align: center;
+      }
+    }
+  }
+  //
+  //
+  //
+  //
+  //
+  /* SECTION 1 BENEFITS*/
+
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section__image {
+    order: 2;
+    margin-top: 50px;
+    transform: translateX(0px);
+  }
+
+  .section__benefits {
+    align-items: center;
+  }
+
+  .section--column--center {
+    margin-bottom: 100px;
+  }
+
+  .tags1 {
+    justify-content: center;
+  }
+  //
+  //
+  //
+  //
+  //
+  /*SECTION 2 GALLERY */
+  .paragraph {
+    align-items: center;
+  }
+
+  .gallery {
+    width: 100%;
+    margin-top: 100px;
+    transform: translate(30px, 0px);
+  }
+
+  .products__container {
+    transform: translate(-30px, 200px);
+  }
+
+  .products__type {
+    font-size: 1.3rem;
+  }
+  //
+  //
+  //
+  //
+  //
+  /* SECTION 3 The new way*/
+  .the-new-way__image {
+    order: 2;
+    margin-top: 50px;
+    justify-content: center;
+
+    &__moneybag {
+      top: 50px;
+      right: 90px;
+      background: white;
+    }
+
+    &__shoppingcart {
+      bottom: 80px;
+      right: 100px;
+      background: rgb(250, 238, 249);
+    }
+
+    &__bar-clock {
+      top: 50px;
+      left: 100px;
+      transform: translateX(-50px);
+      background: white;
+    }
+  }
+  //
+  //
+  //
+  //
+  /*SECTION 4 COST CENTER*/
+  .cost-center__image img {
+    width: 60vw;
+    margin-bottom: 50px;
+    transform: translateX(-15px);
+  }
+
+  .section--background {
+    row-gap: 40px;
+    padding-top: 50px;
+    border-radius: 0px;
+  }
+  //
+  //
+  //
+  //
+  //
+  /*SECTION 8 newsletter */
+  .section--newsletter {
+    border-radius: 0px;
+    row-gap: 40px;
+    padding-top: 50px;
+  }
+
+  .newsletter__image {
+    justify-content: center;
+  }
+
+  .newsletter__image__img {
+    width: 100%;
+  }
+  //
+  //
+  //
+  //
+  //
+  // FOOTER SECTION
+  .footer__contact-us {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+  }
+}
+/*------------------------------------*\
+  RESPONSIVE CODE 1024 
+\*------------------------------------*/
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/*------------------------------------*\
+  RESPONSIVE CODE 767 
+\*------------------------------------*/
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .main-header {
+    margin-bottom: 120px;
+  }
+
+  .hero {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+
+    &__text {
+      align-items: center;
+      margin-bottom: 100px;
+
+      &__header {
+        text-align: center;
+      }
+    }
+  }
+
+  .section {
+    margin-bottom: 100px;
+  }
+
+  .section--inside {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+  }
+
+  .tags {
+    align-items: center;
+    left: 10%;
+    right: 10%;
+  }
+
+  //
+  //
+  //
+  //
+  //
+  /*SECTION 1 - BENEFITS */
+  .section__benefits__title {
+    text-align: center;
+  }
+
+  .tag1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    row-gap: 10px;
+    padding: 25px 20px;
+    text-align: center;
+
+    &__left-side {
+      margin-right: 0px;
+    }
+
+    &__right-side {
+      row-gap: 10px;
+    }
+  }
+
+  .tag1__text__word {
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .section__image img {
+    width: 100%;
+  }
+  //
+  //
+  //
+  //
+  //
+  /* SECTION 2 - Gallery*/
+  .gallery-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery {
+    width: 100%;
+    order: 2;
+    transform: translate(0px, -50px);
+
+    &__img {
+      width: 45vw;
+    }
+  }
+
+  .products__container {
+    transform: translate(0px, 100px);
+  }
+
+  .the-new-way__image {
+    order: 2;
+    margin-top: 50px;
+    justify-content: center;
+
+    &__moneybag {
+      top: 50px;
+      right: 20px;
+      background: white;
+    }
+
+    &__shoppingcart {
+      bottom: 40px;
+      right: 40px;
+      background: rgb(250, 238, 249);
+    }
+
+    &__bar-clock {
+      top: 50px;
+      left: 50px;
+      transform: translateX(-50px);
+      background: white;
+
+      & img {
+        width: 30%;
+      }
+    }
+  }
+  //
+  //
+  //
+  //
+  //
+  /*SECTION 4 COST CENTER*/
+  .cost-center__image img {
+    width: 90vw;
+    margin-bottom: 50px;
+    transform: translateX(-5px);
+  }
+  //
+  //
+  //
+  //
+  //
+  /* SECTION 5 The numbers*/
+  .plug-and-play__watch {
+    top: 0px;
+    left: 0px;
+  }
+
+  .plug-and-play__fire {
+    top: 60px;
+    right: 0px;
+  }
+
+  .plug-and-play__slider {
+    bottom: 10px;
+    right: 0px;
+  }
+  //
+  //
+  //
+  //
+  //
+  /*SECTION 7 Testimonials */
+  .testimonials {
+    align-items: center;
+    text-align: center;
+    row-gap: 30px;
+  }
+
+  .carousel__track-container {
+    width: 80vw;
+  }
+  //
+  //
+  //
+  //
+  //
+  // FOOTER
+  .footer__brand {
+    align-items: center;
+    order: 2;
+  }
+
+  .paragraph--left-aligned {
+    align-items: center;
+  }
+}
+
+/*------------------------------------*\
+  Responsive code end
+\*------------------------------------*/
